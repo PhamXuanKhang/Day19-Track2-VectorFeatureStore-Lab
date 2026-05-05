@@ -24,7 +24,11 @@ if [ ! -d ".venv" ]; then
   fi
 fi
 # shellcheck source=/dev/null
-source .venv/bin/activate
+if [ -f ".venv/Scripts/activate" ]; then
+  source .venv/Scripts/activate
+else
+  source .venv/bin/activate
+fi
 
 # ── 3. Install deps ─────────────────────────────────────────────────────
 if command -v uv >/dev/null 2>&1; then
